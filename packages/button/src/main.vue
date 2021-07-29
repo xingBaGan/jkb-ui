@@ -1,5 +1,7 @@
 <template>
-  <div class="jkb-button"></div>
+  <div class="jkb-button">
+    按钮
+  </div>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Link from '../packages/link/index.js';
+import Button from '../packages/button/index.js';
 
 const components = [
-  Link
+  Button
 ]
 let app = createApp(App);
 components.forEach(component => {

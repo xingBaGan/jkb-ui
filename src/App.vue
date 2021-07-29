@@ -1,6 +1,6 @@
 <template>
     <div>empty</div>
-    <jbk-link></jbk-link>
+    <jkb-button></jkb-button>
 </template>
 
 <script setup>
