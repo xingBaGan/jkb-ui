@@ -11,7 +11,7 @@ function fileExists(filePath) {
   try {
     return fs.statSync(filePath).isFile();
   } catch (err) {
-    return false;
+    fs.writeFileSync(filePath, '');
   }
 }
 
@@ -23,6 +23,7 @@ themes.forEach((theme) => {
     if (['icon', 'option', 'option-group'].indexOf(key) > -1) return;
     var fileName = key + (isSCSS ? '.scss' : '.css');
     indexContent += '@import "./' + fileName + '";\n';
+    // var filePath = path.resolve(basepath, theme, 'src');
     var filePath = path.resolve(basepath, theme, 'src', fileName);
     if (!fileExists(filePath)) {
       fs.writeFileSync(filePath, '', 'utf8');

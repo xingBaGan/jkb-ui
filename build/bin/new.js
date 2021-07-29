@@ -15,7 +15,7 @@ const fs = require('fs');
 const fileSave = require('file-save');
 const uppercamelcase = require('uppercamelcase');
 const componentname = process.argv[2];
-const chineseName = process.argv[3] || componentname;
+
 const ComponentName = uppercamelcase(componentname);
 const PackagePath = path.resolve(__dirname, '../../packages', componentname);
 const Files = [
@@ -33,48 +33,14 @@ export default ${ComponentName};`
   {
     filename: 'src/main.vue',
     content: `<template>
-  <div class="el-${componentname}"></div>
+  <div class="jkb-${componentname}"></div>
 </template>
 
 <script>
 export default {
-  name: 'El${ComponentName}'
+  name: 'Jkb${ComponentName}'
 };
 </script>`
-  },
-  {
-    filename: path.join('../../examples/docs/zh-CN', `${componentname}.md`),
-    content: `## ${ComponentName} ${chineseName}`
-  },
-  {
-    filename: path.join('../../examples/docs/en-US', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../examples/docs/es', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../examples/docs/fr-FR', `${componentname}.md`),
-    content: `## ${ComponentName}`
-  },
-  {
-    filename: path.join('../../test/unit/specs', `${componentname}.spec.js`),
-    content: `import { createTest, destroyVM } from '../util';
-import ${ComponentName} from 'packages/${componentname}';
-
-describe('${ComponentName}', () => {
-  let vm;
-  afterEach(() => {
-    destroyVM(vm);
-  });
-
-  it('create', () => {
-    vm = createTest(${ComponentName}, true);
-    expect(vm.$el).to.exist;
-  });
-});
-`
   },
   {
     filename: path.join('../../packages/theme-chalk/src', `${componentname}.scss`),
@@ -83,15 +49,16 @@ describe('${ComponentName}', () => {
 
 @include b(${componentname}) {
 }`
-  },
-  {
-    filename: path.join('../../types', `${componentname}.d.ts`),
-    content: `import { ElementUIComponent } from './component'
-
-/** ${ComponentName} Component */
-export declare class El${ComponentName} extends ElementUIComponent {
-}`
   }
+//   ,
+//   {
+//     filename: path.join('../../types', `${componentname}.d.ts`),
+//     content: `import { ElementUIComponent } from './component'
+
+// /** ${ComponentName} Component */
+// export declare class El${ComponentName} extends ElementUIComponent {
+// }`
+//   }
 ];
 
 // 添加到 components.json
@@ -113,20 +80,20 @@ fileSave(sassPath)
   .end('\n');
 
 // 添加到 element-ui.d.ts
-const elementTsPath = path.join(__dirname, '../../types/element-ui.d.ts');
+// const elementTsPath = path.join(__dirname, '../../types/element-ui.d.ts');
 
-let elementTsText = `${fs.readFileSync(elementTsPath)}
-/** ${ComponentName} Component */
-export class ${ComponentName} extends El${ComponentName} {}`;
+// let elementTsText = `${fs.readFileSync(elementTsPath)}
+// /** ${ComponentName} Component */
+// export class ${ComponentName} extends El${ComponentName} {}`;
 
-const index = elementTsText.indexOf('export') - 1;
-const importString = `import { El${ComponentName} } from './${componentname}'`;
+// const index = elementTsText.indexOf('export') - 1;
+// const importString = `import { El${ComponentName} } from './${componentname}'`;
 
-elementTsText = elementTsText.slice(0, index) + importString + '\n' + elementTsText.slice(index);
+// elementTsText = elementTsText.slice(0, index) + importString + '\n' + elementTsText.slice(index);
 
-fileSave(elementTsPath)
-  .write(elementTsText, 'utf8')
-  .end('\n');
+// fileSave(elementTsPath)
+//   .write(elementTsText, 'utf8')
+//   .end('\n');
 
 // 创建 package
 Files.forEach(file => {
@@ -135,21 +102,5 @@ Files.forEach(file => {
     .end('\n');
 });
 
-// 添加到 nav.config.json
-const navConfigFile = require('../../examples/nav.config.json');
-
-Object.keys(navConfigFile).forEach(lang => {
-  let groups = navConfigFile[lang][4].groups;
-  groups[groups.length - 1].list.push({
-    path: `/${componentname}`,
-    title: lang === 'zh-CN' && componentname !== chineseName
-      ? `${ComponentName} ${chineseName}`
-      : ComponentName
-  });
-});
-
-fileSave(path.join(__dirname, '../../examples/nav.config.json'))
-  .write(JSON.stringify(navConfigFile, null, '  '), 'utf8')
-  .end('\n');
 
 console.log('DONE!');
