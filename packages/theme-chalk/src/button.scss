@@ -1,5 +1,66 @@
+@charset "UTF-8";
 @import "mixins/mixins";
+@import "mixins/button";
 @import "common/var";
 
 @include b(button) {
+    //位置
+    display: inline-block;
+    box-sizing: border-box;//改变box sizing
+    margin: 0;
+    //形状
+    @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
+    //定义颜色
+    background: $--button-default-background-color;
+    border: $--border-base;
+    border-color: $--button-default-border-color;
+    color: $--button-default-font-color;
+    //其他
+    white-space: nowrap;
+    cursor: pointer;
+    //定义状态
+    @include when(plain) {
+        &:hover,
+        &:focus {
+            background: $--color-white;
+            border-color: $--color-primary;
+            color: $--color-primary;
+        }
+
+        &:active {
+            background: $--color-white;
+            border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+            color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+            outline: none;
+        }
+    }
+    @include when(disabled) {
+        &,
+        &:hover,
+        &:focus {
+            color: $--button-disabled-font-color;
+            cursor: not-allowed;
+            background-image: none;
+            background-color: $--button-disabled-background-color;
+            border-color: $--button-disabled-border-color;
+        }
+
+        &.el-button--text {
+            background-color: transparent;
+        }
+
+        &.is-plain {
+            &,
+            &:hover,
+            &:focus {
+                background-color: $--color-white;
+                border-color: $--button-disabled-border-color;
+                color: $--button-disabled-font-color;
+            }
+        }
+    }
+    @include when(round) {
+        border-radius: 20px;
+        padding: 12px 23px;
+    }
 }
