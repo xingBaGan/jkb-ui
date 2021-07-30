@@ -2,8 +2,8 @@
   <span class="jkb-button"
   @click="handleClick"
   :disabled="disabled"
-  :class="[type?'el-button--'+type:'',
-  buttonSize?'el-button--'+buttonSize:'',{
+  :class="[type?'jkb-button--'+type:'',
+  buttonSize?'jkb-button--'+buttonSize:'',{
     'is-disabled':disabled,
     'is-plain':plain,
     'is-round':round,
