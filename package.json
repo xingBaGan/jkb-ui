@@ -8,13 +8,15 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": " build-storybook",
     "generate:css": "node ./build/bin/gen-cssfile.js",
-    "new:comp": "node ./build/bin/new.js"
+    "new:comp": "node ./build/bin/new.js",
+    "gen:icon": "node ./build/bin/iconInit.js"
   },
   "dependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",

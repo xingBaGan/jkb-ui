@@ -33,7 +33,7 @@ export default ${ComponentName};`
   {
     filename: 'src/main.vue',
     content: `<template>
-  <div class="jkb-${componentname}"></div>
+  <div class="jkb-${componentname}">jkb-${componentname}</div>
 </template>
 
 <script>
@@ -49,16 +49,27 @@ export default {
 
 @include b(${componentname}) {
 }`
-  }
-//   ,
-//   {
-//     filename: path.join('../../types', `${componentname}.d.ts`),
-//     content: `import { ElementUIComponent } from './component'
+  },
+  {
+    filename: path.join('../../stories', `${ComponentName}.stories.js`),
+    content: `import Jkb${ComponentName} from '../packages/${componentname}/index';
+export default {
+  title: 'Example/${ComponentName}',
+  component: Jkb${ComponentName}
+};
+const Template = (args) => ({
+  components: { Jkb${ComponentName} },
+  setup() {
+    return { args };
+  },
+  template: ' <jkb-${componentname} ></jkb-${componentname}>',
+});
+export const Default = Template.bind({});
+Default.args = {
 
-// /** ${ComponentName} Component */
-// export declare class El${ComponentName} extends ElementUIComponent {
-// }`
-//   }
+};
+`
+  }
 ];
 
 // 添加到 components.json

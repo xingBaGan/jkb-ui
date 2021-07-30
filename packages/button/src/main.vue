@@ -7,9 +7,13 @@
     'is-disabled':disabled,
     'is-plain':plain,
     'is-round':round,
+    'is-circle':circle,
+    'is-loading':loading,
   }]"
     >
-    按钮
+    <i class="jkb-icon-loading" v-if="loading"></i>
+    <i :class="icon" v-if="icon && !loading"></i>
+   <span v-if="$slots.default"><slot></slot></span>
   </span>
 </template>
 /**先定义三种状态 */
@@ -23,7 +27,13 @@ export default {
     size: String,
     round: Boolean,
     plain: Boolean,
-    disabled: Boolean
+    disabled: Boolean,
+    loading: Boolean,
+    circle: Boolean,
+    icon: {
+        type: String,
+        default: ''
+      },
   },
    methods: {
       handleClick(evt) {

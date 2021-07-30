@@ -72,6 +72,10 @@
         border-radius: 20px;
         padding: 12px 23px;
     }
+    @include when(circle){
+        border-radius: 50%;
+        padding: $--button-padding-vertical;
+    }
     //定义element
     @include m(primary) {
         @include button-variant(
