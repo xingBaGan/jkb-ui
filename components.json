@@ -1,5 +1,6 @@
 {
   "button": "./packages/button/index.js",
   "icon": "./packages/icon/index.js",
-  "radio": "./packages/radio/index.js"
+  "radio": "./packages/radio/index.js",
+  "button-group": "./packages/button-group/index.js"
 }

@@ -9,6 +9,7 @@
     @include utils-user-select(none);
     margin-right: 30px;
     @include e(input){
+        //需要给外部添加vertical-align 使得内部inner 元素垂直居中
         line-height: 1;
         vertical-align: middle;
     }
