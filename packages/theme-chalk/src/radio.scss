@@ -1,0 +1,62 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+//TODO: 主题样式
+@include b(radio) {
+    display: inline-block;
+    white-space: nowrap;
+    outline: none;
+    @include utils-user-select(none);
+    margin-right: 30px;
+    @include e(input){
+        line-height: 1;
+        vertical-align: middle;
+    }
+    @include e(inner) {
+        border: $--radio-input-border;
+        border-radius: $--radio-input-border-radius;
+        width: $--radio-input-width;
+        height: $--radio-input-height;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        background-color: $--radio-input-background-color;
+        &::after {
+            width: 4px;
+            height: 4px;
+            border-radius: $--radio-input-border-radius;
+            background-color: $--color-white;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.15s ease-in;
+        }
+        &:hover {
+            border-color: $--radio-input-border-color-hover;
+        }
+    }
+    @include e(original) {
+        opacity: 0;
+        display: none;
+    }
+    
+    @include e(label) {
+        font-size: $--radio-font-size;
+        padding-left: 10px;
+    }
+//各种状态
+    @include when(checked) {
+        & > .jkb-radio__label {
+            color: $--radio-checked-font-color;
+        }
+        &  .jkb-radio__inner {
+            border-color: $--radio-checked-input-border-color;
+            background: $--radio-checked-icon-color;
+            &::after {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    }
+}

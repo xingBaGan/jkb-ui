@@ -57,11 +57,12 @@ ColoredDisPlain.args = {
 }
 export const ColoredCircle = ButtonsTemplate.bind({})
 ColoredCircle.args = {
-  template: `<jkb-button type="primary" circle>主要按钮</jkb-button> 
-  <jkb-button type="success" circle>成功按钮</jkb-button>
-  <jkb-button type="warning" circle>警告按钮</jkb-button>
-  <jkb-button type="danger"  circle>危险按钮</jkb-button>
-  `
+  template: `<jkb-button type="primary" circle icon="jkb-icon-check"></jkb-button> 
+  <jkb-button type="success" circle  icon="jkb-icon-check"></jkb-button>
+  <jkb-button type="warning" circle  icon="jkb-icon-check"></jkb-button>
+  <jkb-button type="danger"  circle  icon="jkb-icon-check"></jkb-button>
+  `,
+  
 }
 export const ColoredRound = ButtonsTemplate.bind({})
 ColoredRound.args = {

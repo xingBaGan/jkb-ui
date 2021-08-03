@@ -48,8 +48,10 @@
         &:hover,
         &:focus {
             color: $--button-disabled-font-color;
+            //
             cursor: not-allowed;
             background-image: none;
+            //改边界与背景颜色
             background-color: $--button-disabled-background-color;
             border-color: $--button-disabled-border-color;
         }
