@@ -11,12 +11,12 @@
           ]"
     >
     <!-- 隐藏元素页添加上 checked ,disabled -->
-    <span class="jkb-radio__input">
+    <span class="jkb-radio__input" :class="[]">
         <span class="jkb-radio__inner"
         ></span>
       <input 
       class="jkb-radio__original"
-      :value="label"  ref="radio" type="radio" :name="name" v-model="modelValue" @change="handleChange" >
+      :value="label"  ref="radio" type="radio" :name="name" v-model="modelValue" @change="handleChange" :disabled="isDisabled">
     </span>
       <span class="jkb-radio__label">
            <slot></slot>
@@ -42,7 +42,7 @@ export default {
   },
   computed:{
     isDisabled(){
-      return false;
+      return this.disabled?true:false;
     }
   },
   methods:{

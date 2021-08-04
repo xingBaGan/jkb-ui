@@ -169,7 +169,13 @@
     }
   }
 }
-
+@mixin adjacentWhen($state1,$state2) {
+  @at-root {
+    &.#{$state-prefix + $state1}.#{$state-prefix + $state2}{
+      @content;
+    }
+  }
+}
 @mixin extend-rule($name) {
   @extend #{'%shared-'+$name};
 }

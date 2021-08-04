@@ -11,7 +11,7 @@ const Template = (args) => ({
   template: args.template ? args.template : ' <jkb-radio v-model="radio" label="father" ></jkb-radio><jkb-radio v-model="radio" label="mother" ></jkb-radio>',
   data() {
     return {
-      radio: ""
+      radio: "father"
     }
   },
   methods: {

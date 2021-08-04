@@ -60,4 +60,25 @@
             }
         }
     }
+    @include when(disabled) {
+        cursor:not-allowed;
+        &   .jkb-radio__inner {
+            border-color: $--radio-disabled-input-border-color;
+            background-color: $--radio-disabled-input-fill;
+            &::after{
+                cursor: not-allowed;
+                background-color: $--radio-disabled-icon-color;
+            }
+        }
+        & > .jkb-radio__label {
+            color: $--color-text-placeholder;
+        }
+    }
+    @include adjacentWhen(disabled,checked) {
+        @include e(inner) {
+            &::after {
+                background-color: $--radio-disabled-checked-icon-color;
+            }
+        }
+    }
 }
