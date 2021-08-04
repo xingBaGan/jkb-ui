@@ -1,4 +1,4 @@
-import '../packages/theme-chalk/src/index.scss';
+import '!style-loader!css-loader!sass-loader!../packages/theme-chalk/src/index.scss';
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

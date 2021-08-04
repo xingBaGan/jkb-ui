@@ -8,7 +8,7 @@
     outline: none;
     @include utils-user-select(none);
     margin-right: 30px;
-    @include e(input){
+    @include e(input) {
         //需要给外部添加vertical-align 使得内部inner 元素垂直居中
         line-height: 1;
         vertical-align: middle;
@@ -42,17 +42,17 @@
         opacity: 0;
         display: none;
     }
-    
+
     @include e(label) {
         font-size: $--radio-font-size;
         padding-left: 10px;
     }
-//各种状态
+    //各种状态
     @include when(checked) {
         & > .jkb-radio__label {
             color: $--radio-checked-font-color;
         }
-        &  .jkb-radio__inner {
+        & .jkb-radio__inner {
             border-color: $--radio-checked-input-border-color;
             background: $--radio-checked-icon-color;
             &::after {
@@ -61,12 +61,12 @@
         }
     }
     @include when(disabled) {
-        cursor:not-allowed;
-        &   .jkb-radio__inner {
+        cursor: not-allowed;
+        & .jkb-radio__inner {
+            cursor: not-allowed;
             border-color: $--radio-disabled-input-border-color;
             background-color: $--radio-disabled-input-fill;
-            &::after{
-                cursor: not-allowed;
+            &::after {
                 background-color: $--radio-disabled-icon-color;
             }
         }
@@ -74,7 +74,7 @@
             color: $--color-text-placeholder;
         }
     }
-    @include adjacentWhen(disabled,checked) {
+    @include adjacentWhen(disabled, checked) {
         @include e(inner) {
             &::after {
                 background-color: $--radio-disabled-checked-icon-color;

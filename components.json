@@ -2,5 +2,7 @@
   "button": "./packages/button/index.js",
   "icon": "./packages/icon/index.js",
   "radio": "./packages/radio/index.js",
-  "button-group": "./packages/button-group/index.js"
+  "button-group": "./packages/button-group/index.js",
+  "input-number": "./packages/input-number/index.js",
+  "input": "./packages/input/index.js"
 }
